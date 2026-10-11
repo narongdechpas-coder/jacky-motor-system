@@ -48,7 +48,10 @@ const abc = async (p, view) => {
     await unlock(p);
   }
   if (await p.locator('.side-show').count()) await p.locator('.side-show').click();
-  await p.locator(`.abc-side .nav-${view}`).click();
+  // Side menu groups fold like an accordion: open the item's group first if it is closed.
+  const item = p.locator(`.abc-side .nav-${view}`);
+  if (!(await item.isVisible())) await p.locator('.abc-group', { has: p.locator(`.nav-${view}`) }).locator('.abc-group-label').click();
+  await item.click();
 };
 const tools = async (p, item) => {
   await p.locator('.nav-tools').click();
@@ -87,6 +90,12 @@ await office.locator('.staff-gate').waitFor();
 await unlock(office);
 await abc(office, 'backoffice');
 await office.getByRole('heading', { name: 'งานเข้า' }).waitFor();
+// Accordion: other groups start folded, open on click and stay as left; the current group cannot fold.
+assert.equal(await office.locator('.abc-side .nav-marketing').isVisible(), false, 'partner group folded');
+await office.locator('.abc-group', { has: office.locator('.nav-marketing') }).locator('.abc-group-label').click();
+assert.equal(await office.locator('.abc-side .nav-marketing').isVisible(), true, 'partner group opens');
+await office.locator('.abc-group', { has: office.locator('.nav-marketing') }).locator('.abc-group-label').click();
+assert.equal(await office.locator('.abc-side .nav-marketing').isVisible(), false, 'and folds again');
 log('customer and back-office tabs open; the Jacky system asks for the staff password (wrong one refused, sign-out locks it)');
 // Chatbot: the page sends the conversation and the live catalogue to /api/chat (mocked here; the
 // real one is a Netlify function calling Claude). Personal data never leaves the page.

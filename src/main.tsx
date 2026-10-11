@@ -96,6 +96,23 @@ function App() {
   const [sideOpen, setSideOpen] = useState(() => read('abc-side') !== '0');
   const toggleSide = () => setSideOpen((v) => (write('abc-side', v ? '0' : '1'), !v));
   const [custHome, setCustHome] = useState(0);
+  // Side menu groups fold like an accordion; the group of the screen on show is always open.
+  const groupOf = (v: View) => ABC_GROUPS.find(([, items]) => items.some(([x]) => x === v))?.[0];
+  const [openGroups, setOpenGroups] = useState<NavKey[]>(() => {
+    try {
+      const saved = JSON.parse(read('abc-side-groups') ?? 'null');
+      if (Array.isArray(saved)) return saved as NavKey[];
+    } catch {
+      /* ignore */
+    }
+    return ['navGroupOps'];
+  });
+  const toggleGroup = (g: NavKey) =>
+    setOpenGroups((cur) => {
+      const next = cur.includes(g) ? cur.filter((x) => x !== g) : [...cur, g];
+      write('abc-side-groups', JSON.stringify(next));
+      return next;
+    });
   const [lastAbc, setLastAbc] = useState<View>(() => (isAbc(view) ? view : 'backoffice'));
   const [toasts, setToasts] = useState<Toast[]>([]);
   const s = useStore();
@@ -291,17 +308,27 @@ function App() {
               <button type="button" className="side-toggle side-hide" aria-expanded={true} aria-controls="abc-side" onClick={toggleSide}>
                 <span aria-hidden="true">«</span> {t('navHideMenu')}
               </button>
-              {ABC_GROUPS.map(([g, items]) => (
-                <div key={g} className="abc-group">
-                  <div className="abc-group-label">{t(g)}</div>
+              {ABC_GROUPS.map(([g, items]) => {
+                const open = openGroups.includes(g) || groupOf(view) === g;
+                const here = groupOf(view) === g;
+                return (
+                <div key={g} className={`abc-group${open ? ' open' : ''}${here ? ' here' : ''}`}>
+                  <button type="button" className="abc-group-label" aria-expanded={open} aria-controls={`grp-${g}`} onClick={() => { if (!here) toggleGroup(g); }}>
+                    <span>{t(g)}</span>
+                    {!open && badge(items.reduce((n, [v]) => n + (badges[v] ?? 0), 0) || undefined)}
+                    <span className="abc-chev" aria-hidden="true">▾</span>
+                  </button>
+                  <div id={`grp-${g}`} className="abc-items">
                   {items.map(([v, k]) => (
                     <button key={v} type="button" className={`abc-item nav-${v}${view === v ? ' on' : ''}`} aria-current={view === v ? 'page' : undefined} onClick={() => setView(v)}>
                       <span>{t(k)}</span>
                       {badge(badges[v])}
                     </button>
                   ))}
+                  </div>
                 </div>
-              ))}
+                );
+              })}
               <button type="button" className="side-lock" onClick={() => { setStaffUnlocked(false); setView('customer'); }}>
                 <span aria-hidden="true">🔒</span> {t('sgSignOut')}
               </button>
