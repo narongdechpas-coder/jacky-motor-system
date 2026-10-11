@@ -19,6 +19,8 @@ const errors = [];
 const office = await ctx.newPage();
 office.on('pageerror', (e) => errors.push(e.message));
 await office.goto(file + '#backoffice');
+await office.locator('#sg-password').fill('5228');
+await office.locator('.staff-gate').getByRole('button', { name: 'เข้าสู่ระบบ' }).click();
 await office.getByRole('heading', { name: 'งานเข้า' }).waitFor();
 const fontsOk = await office.evaluate(async () => {
   await document.fonts.ready;

@@ -2047,3 +2047,9 @@ button.line-card:focus-visible { outline: 3px solid var(--accent); outline-offse
 .callout.pa-review-note { display: block; }
 .pa-review-note ul { margin: 4px 0 0; padding-left: 20px; }
 .fire-sell .tr-plan-grid, .buy.fire .tr-plan-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 380px)); }
+.staff-gate { display: grid; gap: 8px; width: min(380px, calc(100vw - 32px)); }
+.staff-gate input { font-size: 1.2rem; letter-spacing: 0.3em; text-align: center; }
+.staff-gate .sg-note { font-size: 0.78rem; margin: 0; }
+.staff-gate .actions { justify-content: flex-end; }
+.side-lock { margin: 16px 12px 8px; padding: 8px 12px; border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: 999px; background: none; color: inherit; font: inherit; font-size: 0.85rem; cursor: pointer; opacity: 0.85; text-align: left; }
+.side-lock:hover { opacity: 1; background: color-mix(in srgb, currentColor 10%, transparent); }

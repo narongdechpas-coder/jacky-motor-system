@@ -1,5 +1,13 @@
 /** Strings for the customer chatbot. */
 export const chatTh = {
+  sgTitle: 'เข้าสู่ระบบ Jacky',
+  sgLead: 'ระบบ Jacky สำหรับพนักงาน (หลังบ้าน ผลิตภัณฑ์ ช่องทาง Partner รายงาน) กรุณาใส่รหัสผ่าน',
+  sgPassword: 'รหัสผ่าน',
+  sgEnter: 'เข้าสู่ระบบ',
+  sgWrong: 'รหัสผ่านไม่ถูกต้อง (ลองได้อีก {n} ครั้ง)',
+  sgLocked: 'ใส่รหัสผิดหลายครั้ง ลองใหม่ใน {s} วินาที',
+  sgNote: 'ยืนยันครั้งเดียวต่อแท็บ · เดโม: รหัสอยู่ในหน้าเว็บ ไม่ใช่ระบบรักษาความปลอดภัยจริง',
+  sgSignOut: 'ออกจากระบบ Jacky',
   cbTitle: 'ถามน้องแจ็คกี้',
   cbBadge: 'AI',
   cbLead: 'ถามเรื่องแผนประกัน ความคุ้มครอง เบี้ย และขั้นตอนการซื้อได้เลย',
@@ -25,6 +33,14 @@ export const chatTh = {
 };
 
 export const chatEn: typeof chatTh = {
+  sgTitle: 'Sign in to the Jacky system',
+  sgLead: 'The Jacky system is for staff (back office, products, partner channel, reports). Please enter the password.',
+  sgPassword: 'Password',
+  sgEnter: 'Sign in',
+  sgWrong: 'Wrong password ({n} tries left)',
+  sgLocked: 'Too many wrong tries. Try again in {s} seconds.',
+  sgNote: 'Asked once per tab · Demo: the password is in the page, this is not real security',
+  sgSignOut: 'Sign out of the Jacky system',
   cbTitle: 'Ask Jacky',
   cbBadge: 'AI',
   cbLead: 'Ask about plans, cover, premiums and how to buy',
