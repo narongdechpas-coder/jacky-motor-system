@@ -1,3 +1,4 @@
+import LOGO from '../../assets/brand/logo.webp';
 import { useEffect, useState } from 'react';
 import { optionPrice } from '../data/agents';
 import { installmentPlan } from '../data/packages';
@@ -128,7 +129,7 @@ export function OfferPage({ id, asAgent, print, onBack }: { id: string; asAgent:
         <header className="offer-head">
           <div className="offer-brand">
             <span className="logo" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="34" height="34"><path d="M16 3 5 7v8c0 7 4.7 12 11 14 6.3-2 11-7 11-14V7L16 3Z" fill="var(--accent)" /></svg>
+              <img src={LOGO} alt="" width={52} height={52} />
             </span>
             <div>
               <b>{t('appName')}</b>
