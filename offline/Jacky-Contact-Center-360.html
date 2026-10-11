@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ABC Contact Center 360</title>
+<title>Jacky Contact Center 360</title>
 <style>
 html{color-scheme:light}
 body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -473,8 +473,8 @@ tr.fresh td{background:var(--accent-soft)}
 <header class="topbar">
   <div class="topbar-in">
     <div class="brand">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 30 7v9c0 8-5.6 13.6-13 16C9.6 29.6 4 24 4 16V7z" fill="var(--accent)"/><text x="17" y="21" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="var(--accent-ink)">ABC</text></svg>
-      <div><b>ABC Insurance</b><small>Contact Center 360 · CRM × CDP (Mockup)</small></div>
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 30 7v9c0 8-5.6 13.6-13 16C9.6 29.6 4 24 4 16V7z" fill="var(--accent)"/><text x="17" y="23" text-anchor="middle" font-family="Anuphan,sans-serif" font-size="16" font-weight="700" fill="var(--accent-ink)">J</text></svg>
+      <div><b>Jacky Insurance</b><small>Contact Center 360 · CRM × CDP (Mockup)</small></div>
     </div>
     <nav class="tabs" role="tablist" aria-label="Views">
       <button class="tab" role="tab" data-view="launcher" aria-selected="true">Scenarios</button>
@@ -494,7 +494,7 @@ tr.fresh td{background:var(--accent-soft)}
       <div>
         <span class="eyebrow">Demo script · 7 scenarios</span>
         <h1>รับสายครั้งเดียว เห็นลูกค้าครบ 360° แล้วเปิด Ticket ได้ทันที</h1>
-        <p>จำลองการรับเรื่องจากโทรศัพท์ LINE OA และ Facebook ของประกันภัย ABC ทุกครั้งที่มีสายหรือแชทเข้า CRM จะถามข้อมูลจาก CDP แล้วแสดงเป็น Pop-up ทันที ถ้าเบอร์ไม่ตรงจะยืนยันตัวตนก่อน เมื่อจบการสนทนา ข้อมูลไหลกลับเข้า CDP และส่วนงานที่รับเรื่องจะดำเนินการจนปิด Ticket</p>
+        <p>จำลองการรับเรื่องจากโทรศัพท์ LINE OA และ Facebook ของประกันภัย Jacky ทุกครั้งที่มีสายหรือแชทเข้า CRM จะถามข้อมูลจาก CDP แล้วแสดงเป็น Pop-up ทันที ถ้าเบอร์ไม่ตรงจะยืนยันตัวตนก่อน เมื่อจบการสนทนา ข้อมูลไหลกลับเข้า CDP และส่วนงานที่รับเรื่องจะดำเนินการจนปิด Ticket</p>
       </div>
       <div class="legend-row">
         <span class="chip acc">ผู้ถือกรมธรรม์ ×5</span><span class="chip info">ลูกค้าใหม่ ×1</span><span class="chip warn">คู่กรณี ×1</span>
@@ -579,7 +579,7 @@ const ICON={
 };
 const CH={
   voice:{label:'Voice · Hotline 1234',short:'Voice',cls:'',icon:ICON.voice,verb:'สายเรียกเข้า'},
-  line:{label:'LINE OA @abcinsure',short:'LINE',cls:'line',icon:ICON.chat,verb:'แชทใหม่จาก LINE'},
+  line:{label:'LINE OA @jackyinsure',short:'LINE',cls:'line',icon:ICON.chat,verb:'แชทใหม่จาก LINE'},
   fb:{label:'Facebook Messenger',short:'Facebook',cls:'fb',icon:ICON.chat,verb:'ข้อความใหม่จาก Facebook'}
 };
 const TYPE={policyholder:{label:'ผู้ถือกรมธรรม์',cls:'acc'},prospect:{label:'ลูกค้าใหม่',cls:'info'},thirdparty:{label:'คู่กรณี',cls:'warn'}};
@@ -597,18 +597,18 @@ const S=[
   claims:[{p:'motor',name:'เคลมกระจกบังลมหน้า',no:'CLM-2567-00318',d:'ปิดเคลม · จ่าย ฿12,800',st:'Closed',when:'14/06/2567'}],
   tickets:[],
   journey:[
-    ['07/10 08:42','ABC Connect App','เปิดหน้า "แจ้งเคลม" 2 ครั้ง แต่ไม่ได้ส่งฟอร์ม'],
+    ['07/10 08:42','Jacky Connect App','เปิดหน้า "แจ้งเคลม" 2 ครั้ง แต่ไม่ได้ส่งฟอร์ม'],
     ['02/10 19:10','SMS','ได้รับข้อความเตือนเช็กสภาพรถก่อนเดินทางไกล'],
     ['18/09 12:03','Website','อ่านบทความ "ประกัน PA สำหรับคนเดินทางบ่อย"'],
     ['30/08 10:20','LINE OA','กดดูคูปองตรวจเช็กรถฟรี ที่ศูนย์พันธมิตร'],
     ['15/03 09:00','Billing','ชำระเบี้ยต่ออายุผ่านบัตรเครดิต (Auto-renew)']],
   senti:{label:'กังวล',v:-0.3,cls:'warn'}, churn:{v:12,cls:'good',label:'ต่ำ'},
-  nba:{title:'ABC PA Plus (อุบัติเหตุส่วนบุคคล)',kind:'Cross-sell',prop:72,price:'฿2,990/ปี',hold:true,
+  nba:{title:'Jacky PA Plus (อุบัติเหตุส่วนบุคคล)',kind:'Cross-sell',prop:72,price:'฿2,990/ปี',hold:true,
     script:'"เพื่อความอุ่นใจระหว่างรอรถซ่อม คุณสมชายสนใจรับข้อมูลประกันอุบัติเหตุ PA Plus ทาง LINE ไหมคะ"',
     holdNote:'ระบบแนะนำให้เสนอหลังจบเคลม ถ้าลูกค้าเครียดในระหว่างแจ้งอุบัติเหตุ'},
   transcript:[
     ['sys','CTI · Screen pop จาก CDP · 0.21 วินาที'],
-    ['a','ABC ประกันภัย สวัสดีค่ะ คุณสมชายใช่ไหมคะ ดิฉันพรทิพย์ยินดีให้บริการค่ะ'],
+    ['a','Jacky ประกันภัย สวัสดีค่ะ คุณสมชายใช่ไหมคะ ดิฉันพรทิพย์ยินดีให้บริการค่ะ'],
     ['c','ครับ ผมเพิ่งโดนชนท้ายที่แยกอโศก-เพชรบุรีครับ ลองแจ้งในแอปแล้วแต่ส่งไม่ผ่าน'],
     ['a','ไม่ต้องกังวลนะคะ ดิฉันเห็นกรมธรรม์ชั้น 1 ของรถ Camry ทะเบียน กข 1234 แล้ว คุณสมชายบาดเจ็บไหมคะ'],
     ['c','ไม่เจ็บครับ คู่กรณีเป็น Honda City ทะเบียน 3ขข 5678 เขายอมรับว่าเป็นฝ่ายผิด'],
@@ -627,7 +627,7 @@ const S=[
   profile:{name:'คุณนภา พรหมมา',ini:'นพ',meta:'หญิง · 38 ปี · ปากเกร็ด นนทบุรี',cdp:'CDP-00230551',since:'ลูกค้าตั้งแต่ 2564 (5 ปี)',clv:'฿96,500',pref:'LINE',consent:'PDPA ✓ · Marketing ✓',segments:[['Loyal 5Y','acc'],['Renewal ≤30d','warn'],['Flood-risk zone','info']]},
   policies:[
     {p:'home',name:'ประกันอัคคีภัยบ้านอยู่อาศัย',no:'HM-2568-0088127',d:'ทาวน์โฮม 2 ชั้น · ทุนประกัน ฿2,800,000',st:'หมดอายุใน 30 วัน',exp:'06/11/2569',prem:'฿2,450',warn:true},
-    {p:'health',name:'ABC Health Smart แผน 1',no:'HL-2566-0230088',d:'IPD ฿1,000,000/ปี',st:'Active',exp:'20/04/2570',prem:'฿14,200'}],
+    {p:'health',name:'Jacky Health Smart แผน 1',no:'HL-2566-0230088',d:'IPD ฿1,000,000/ปี',st:'Active',exp:'20/04/2570',prem:'฿14,200'}],
   claims:[],
   tickets:[{no:'TK-2568-077810',name:'ขอเปลี่ยนที่อยู่จัดส่งเอกสาร',st:'Resolved',when:'12/02/2568'}],
   journey:[
@@ -660,37 +660,37 @@ const S=[
   profile:{name:'ผู้สนใจ (ยังไม่ระบุชื่อ)',ini:'?',meta:'คาดว่าอายุ 34 ปี · กรุงเทพฯ (จาก IP)',cdp:'CDP-ANON-7f3a91',since:'เข้าเว็บครั้งแรก 28/09/2569',clv:'—',pref:'—',consent:'ยังไม่มี Consent',segments:[['Prospect','info'],['Health intent: สูง','acc'],['From FB Ads','']]},
   policies:[], claims:[], tickets:[],
   journey:[
-    ['07/10 13:55','Website','กดปุ่ม "โทรหาเรา" จากหน้า ABC Health Smart'],
+    ['07/10 13:55','Website','กดปุ่ม "โทรหาเรา" จากหน้า Jacky Health Smart'],
     ['07/10 13:41','Website','กรอกฟอร์มให้โทรกลับไม่ครบ (มีเฉพาะเบอร์)'],
     ['06/10 22:10','Premium calculator','คำนวณเบี้ย อายุ 34 · แผน 2 · ฿18,900/ปี'],
     ['03/10 20:31','Website','ดูหน้าเปรียบเทียบแผนสุขภาพ 4 ครั้ง'],
     ['28/09 12:15','Facebook Ads','คลิกโฆษณา "ประกันสุขภาพ เริ่มต้นวันละ 50 บาท"']],
   senti:{label:'สนใจ',v:0.4,cls:'good'}, churn:null,
-  nba:{title:'ABC Health Smart แผน 2',kind:'New business',prop:76,price:'฿18,900/ปี',
+  nba:{title:'Jacky Health Smart แผน 2',kind:'New business',prop:76,price:'฿18,900/ปี',
     script:'"จากที่คุณคำนวณไว้ แผน 2 ค่าห้อง 4,000 บาท/คืน คุ้มครอง IPD 3 ล้านบาท/ปี เบี้ยเดือนละประมาณ 1,575 บาทค่ะ"'},
   transcript:[
     ['sys','CTI · ไม่พบใน CRM → CDP พบ Anonymous profile (78%)'],
-    ['a','ABC ประกันภัย สวัสดีค่ะ ดิฉันพรทิพย์ ขอทราบชื่อด้วยค่ะ'],
+    ['a','Jacky ประกันภัย สวัสดีค่ะ ดิฉันพรทิพย์ ขอทราบชื่อด้วยค่ะ'],
     ['c','ผมธนพล ครับ เมื่อกี้ดูประกันสุขภาพในเว็บ อยากถามรายละเอียดแผน 2 ครับ'],
     ['a','ค่ะคุณธนพล แผน 2 ที่คำนวณไว้ เบี้ย 18,900 บาท/ปี สำหรับอายุ 34 ปี ค่าห้อง 4,000 บาทต่อคืนค่ะ'],
     ['c','ต้องตรวจสุขภาพก่อนไหมครับ แล้วผ่อนได้ไหม'],
     ['a','ไม่ต้องตรวจสุขภาพสำหรับอายุไม่เกิน 40 ปี และผ่อนรายเดือนได้ค่ะ ขออนุญาตเก็บข้อมูลเพื่อส่งใบเสนอราคาและให้เจ้าหน้าที่ติดต่อกลับนะคะ'],
     ['c','ได้ครับ ส่งทาง LINE ได้เลย']],
   ticket:{id:'TK-2569-104250',cat:'Sales Lead',sub:'ประกันสุขภาพ – ขอใบเสนอราคา',pri:'Medium',sla:120,slaLabel:'Telesales ติดต่อกลับ',team:'Telesales – Health',link:'— (ยังไม่มีกรมธรรม์)',status:1,consent:true,
-    ai:'ผู้สนใจรายใหม่ คุณธนพล อายุ 34 ปี สนใจ ABC Health Smart แผน 2 (฿18,900/ปี) ถามเรื่องตรวจสุขภาพและผ่อนรายเดือน ยินยอมให้ติดต่อกลับและรับใบเสนอราคาทาง LINE Lead score 82'},
+    ai:'ผู้สนใจรายใหม่ คุณธนพล อายุ 34 ปี สนใจ Jacky Health Smart แผน 2 (฿18,900/ปี) ถามเรื่องตรวจสุขภาพและผ่อนรายเดือน ยินยอมให้ติดต่อกลับและรับใบเสนอราคาทาง LINE Lead score 82'},
   sync:{events:[['identity.merged','CDP-ANON-7f3a91 → CDP-00318822 (ชื่อ + เบอร์ + Cookie)'],['consent.updated','PDPA ✓ · Marketing ✓ · ช่องทาง LINE/Voice'],['interaction.completed','Voice · 04:30 นาที · sentiment +0.4'],['lead.created','TK-2569-104250 · Lead score 82']],
     before:[['Prospect','info'],['Health intent: สูง','acc'],['From FB Ads','']], after:[['Hot lead','good'],['Health · แผน 2','acc'],['Consent ✓','info']],
     journeys:[['ทันที','SMS ลิงก์เพิ่มเพื่อน LINE OA + ใบเสนอราคา'],['≤ 2 ชม.','Telesales โทรกลับ (มอบหมายอัตโนมัติ)'],['+7 วัน ถ้ายังไม่ซื้อ','Retarget Facebook Ads ด้วย Audience ใหม่']]}},
 
 { id:4, channel:'voice', type:'thirdparty', title:'คู่กรณีโทรถามสถานะซ่อมรถ',
-  who:'ไม่ใช่ลูกค้า ABC · ค้นด้วยทะเบียนรถ/เลขเคลม', from:'062-777-4411', route:'IVR กด 3 คู่กรณี/บุคคลภายนอก → TP Claim Queue', wait:'00:41',
+  who:'ไม่ใช่ลูกค้า Jacky · ค้นด้วยทะเบียนรถ/เลขเคลม', from:'062-777-4411', route:'IVR กด 3 คู่กรณี/บุคคลภายนอก → TP Claim Queue', wait:'00:41',
   notes:['เบอร์ไม่อยู่ในฐานลูกค้า Pop-up จึงเปิดช่องค้นหาด้วยทะเบียนรถหรือเลขเคลม','CDP สร้าง Third-party profile ผูกกับเคลม เห็นอู่ซ่อมและความคืบหน้า','ระงับการเสนอขายระหว่างเคลม แต่ขอ Consent ไว้เสนอหลังปิดเคลม'],
   identity:{status:'unknown',method:'ไม่พบ ANI ในฐานลูกค้า → ค้นหาด้วยทะเบียนรถ',conf:0},
   search:{type:'ทะเบียนรถ',q:'7กพ 9012 กรุงเทพมหานคร'},
   identity2:{status:'thirdparty',method:'ค้นพบจากทะเบียนรถในเคลม CLM-2569-00412',conf:96},
   profile:{name:'คุณอรทัย ศรีสุข',ini:'อศ',meta:'คู่กรณี (ฝ่ายถูก) · Mazda 2 · 7กพ 9012',cdp:'CDP-TP-004412',since:'สร้างเมื่อ 22/09/2569 จากเคลม',clv:'—',pref:'Voice',consent:'PDPA (เพื่อเคลม) ✓ · Marketing ✗',segments:[['Third party','warn'],['Claim in repair','info']]},
   policies:[],
-  claims:[{p:'tp',name:'เคลมคู่กรณี (ABC เป็นฝ่ายผิด)',no:'CLM-2569-00412',d:'ผู้เอาประกัน: คุณวิทยา แก้วมณี · อู่ ศรีนครินทร์ออโต้ (อู่ในเครือ)',st:'กำลังซ่อม 60%',when:'นัดรับรถ 14/10/2569',warn:true},
+  claims:[{p:'tp',name:'เคลมคู่กรณี (Jacky เป็นฝ่ายผิด)',no:'CLM-2569-00412',d:'ผู้เอาประกัน: คุณวิทยา แก้วมณี · อู่ ศรีนครินทร์ออโต้ (อู่ในเครือ)',st:'กำลังซ่อม 60%',when:'นัดรับรถ 14/10/2569',warn:true},
     {p:'tp',name:'ค่าขาดประโยชน์ใช้รถ',no:'CLM-2569-00412-L',d:'12 วัน × ฿500 = ฿6,000 · รอเอกสารสมุดบัญชี',st:'รอเอกสาร',when:'ยื่น 25/09/2569',warn:true}],
   tickets:[{no:'TK-2569-099120',name:'คู่กรณีขอเปลี่ยนอู่',st:'Resolved',when:'24/09/2569'}],
   journey:[
@@ -701,12 +701,12 @@ const S=[
     ['22/09 18:30','Claim system','เปิดเคลมคู่กรณี จากที่เกิดเหตุถนนพระราม 9']],
   senti:{label:'ไม่พอใจเล็กน้อย',v:-0.2,cls:'warn'}, churn:null,
   nba:{title:'ไม่เสนอขายระหว่างเคลม',kind:'Suppress',prop:0,price:'',hold:true,
-    script:'"หลังปิดเคลม ABC ขออนุญาตส่งข้อเสนอประกันรถยนต์ให้คุณอรทัยทาง SMS ได้ไหมคะ"',
+    script:'"หลังปิดเคลม Jacky ขออนุญาตส่งข้อเสนอประกันรถยนต์ให้คุณอรทัยทาง SMS ได้ไหมคะ"',
     holdNote:'คู่กรณีที่ได้รับบริการดีมีโอกาสเปลี่ยนมาเป็นลูกค้า แต่ต้องขอ Consent แยกก่อน'},
   transcript:[
     ['sys','CTI · ไม่พบใน CRM → เปิดช่องค้นหาคู่กรณี'],
-    ['a','ABC ประกันภัย สวัสดีค่ะ ขอทราบทะเบียนรถหรือเลขเคลมค่ะ'],
-    ['c','รถ Mazda 2 ทะเบียน 7กพ 9012 ค่ะ รถของ ABC ชนเรา ตอนนี้ซ่อมถึงไหนแล้วคะ'],
+    ['a','Jacky ประกันภัย สวัสดีค่ะ ขอทราบทะเบียนรถหรือเลขเคลมค่ะ'],
+    ['c','รถ Mazda 2 ทะเบียน 7กพ 9012 ค่ะ รถของ Jacky ชนเรา ตอนนี้ซ่อมถึงไหนแล้วคะ'],
     ['a','คุณอรทัยใช่ไหมคะ อู่ ศรีนครินทร์ออโต้แจ้งว่าพ่นสีเสร็จแล้ว รอประกอบ นัดรับรถ 14 ตุลาคมค่ะ'],
     ['c','แล้วค่าขาดประโยชน์ที่ยื่นไปล่ะคะ เงียบไปเลย'],
     ['a','ตอนนี้รอสำเนาสมุดบัญชีค่ะ ส่งทาง SMS ลิงก์อัปโหลดให้เลยนะคะ ได้รับแล้วจ่ายภายใน 3 วันทำการค่ะ'],
@@ -723,7 +723,7 @@ const S=[
   identity:{status:'matched',method:'Deterministic · Facebook PSID ผูกกับเบอร์ที่ยืนยันแล้ว',conf:97},
   profile:{name:'คุณกฤษณ์ ธนากร',ini:'กธ',meta:'ชาย · 41 ปี · เชียงใหม่',cdp:'CDP-00145209',since:'ลูกค้าตั้งแต่ 2562 (7 ปี)',clv:'฿210,000',pref:'Facebook, Voice',consent:'PDPA ✓ · Marketing ✓',segments:[['At-risk','crit'],['Health + Motor','acc'],['Complained ×2','warn']]},
   policies:[
-    {p:'health',name:'ABC Health Smart แผน 3',no:'HL-2565-0145209',d:'IPD ฿5,000,000/ปี · ห้อง ฿6,000',st:'Active',exp:'10/01/2570',prem:'฿32,400'},
+    {p:'health',name:'Jacky Health Smart แผน 3',no:'HL-2565-0145209',d:'IPD ฿5,000,000/ปี · ห้อง ฿6,000',st:'Active',exp:'10/01/2570',prem:'฿32,400'},
     {p:'motor',name:'ประกันรถยนต์ชั้น 2+',no:'MT-2568-0098331',d:'Honda HR-V · 2กร 4471 เชียงใหม่',st:'Active',exp:'02/05/2570',prem:'฿9,800'}],
   claims:[{p:'health',name:'เคลมค่ารักษา (IPD) – ไส้ติ่งอักเสบ',no:'CLM-H-2569-0233',d:'฿68,400 · รพ.เอกชน เชียงใหม่ (สำรองจ่าย)',st:'ค้าง 12 วัน · เกิน SLA',when:'ยื่น 25/09/2569',crit:true}],
   tickets:[{no:'TK-2569-101877',name:'ติดตามเคลม CLM-H-2569-0233',st:'Open',when:'01/10/2569'},{no:'TK-2569-103020',name:'ติดตามเคลม (ครั้งที่ 2)',st:'Open',when:'04/10/2569'}],
@@ -735,7 +735,7 @@ const S=[
     ['25/09 09:20','Claim system','ยื่นเคลมสำรองจ่าย ฿68,400']],
   senti:{label:'โกรธ',v:-0.72,cls:'crit'}, churn:{v:68,cls:'crit',label:'สูง'},
   nba:{title:'Retention: Fast-track เคลม + ส่วนลดต่ออายุ 10%',kind:'Retention',prop:64,price:'ส่วนลด ฿3,240',
-    script:'"ขอโทษจริง ๆ ค่ะคุณกฤษณ์ ดิฉันส่งเคลมเข้า Fast-track ให้แล้ว จะโอนเงินภายใน 24 ชั่วโมง และรอบต่ออายุหน้า ABC มอบส่วนลด 10% ให้ค่ะ"'},
+    script:'"ขอโทษจริง ๆ ค่ะคุณกฤษณ์ ดิฉันส่งเคลมเข้า Fast-track ให้แล้ว จะโอนเงินภายใน 24 ชั่วโมง และรอบต่ออายุหน้า Jacky มอบส่วนลด 10% ให้ค่ะ"'},
   transcript:[
     ['sys','Facebook · Priority routing (keyword + sentiment)'],
     ['c','เคลมค่ารักษา 12 วันแล้วยังไม่ได้เงิน โทรไปสองรอบก็บอกให้รอ ถ้าแบบนี้จะยกเลิกกรมธรรม์ทั้งหมด!'],
@@ -769,7 +769,7 @@ const BO_SHORT=[
   events:[['policy.renewed','HM-2569-0088127 · ฿3,650'],['payment.received','RC-2569-77630']],csat:5},
  {dept:'Telesales – Health',user:'คุณอภิชาติ (TS-077)',ini:'อช',ola:'โทรกลับภายใน 2 ชม.',created:'07/10 14:01',
   actions:[{at:'07/10 14:46',t:'โทรกลับลูกค้า',note:'ภายใน 45 นาที · อธิบายแผน 2 และการผ่อนรายเดือน',status:'In progress'},
-   {at:'07/10 15:05',t:'ลูกค้าตัดสินใจซื้อ',note:'ABC Health Smart แผน 2 · ผ่อนบัตรเครดิต ฿1,575/เดือน',status:'In progress'},
+   {at:'07/10 15:05',t:'ลูกค้าตัดสินใจซื้อ',note:'Jacky Health Smart แผน 2 · ผ่อนบัตรเครดิต ฿1,575/เดือน',status:'In progress'},
    {at:'07/10 15:20',t:'ส่งต่อออกกรมธรรม์ (Policy Issuance)',note:'HL-2569-0318822 · คุ้มครองเริ่ม 08/10/2569',status:'Resolved'}],
   resolution:{code:'Won – policy issued',note:'ปิดการขายแผน 2 ภายในวันเดียวจาก Lead ที่ CDP จับได้บนเว็บ'},
   notify:[['LINE','ต้อนรับลูกค้าใหม่ + e-Policy'],['Agent','แจ้งพรทิพย์ (A-217): Lead ปิดการขายแล้ว']],
@@ -804,7 +804,7 @@ S.push({ id:6, pick:'Mapping', channel:'voice', type:'policyholder', kyc:true, t
   profile:{name:'คุณวิไลวรรณ สุขประเสริฐ',ini:'วส',meta:'หญิง · 41 ปี · ลาดพร้าว กรุงเทพฯ',cdp:'CDP-00087321',since:'ลูกค้าตั้งแต่ 2561 (8 ปี)',clv:'฿265,000',pref:'Voice, Email',consent:'PDPA ✓ · Marketing ✗',segments:[['Multi-policy','acc'],['Contact outdated','warn'],['Tax season','info']]},
   policies:[
     {p:'motor',name:'ประกันรถยนต์ชั้น 1',no:'MT-2568-0087321',d:'Mazda CX-5 · 5กก 2290 กรุงเทพมหานคร',st:'Active',exp:'30/06/2570',prem:'฿19,800'},
-    {p:'health',name:'ABC Health Smart แผน 2',no:'HL-2566-0087321',d:'IPD ฿3,000,000/ปี',st:'Active',exp:'15/01/2570',prem:'฿21,600'}],
+    {p:'health',name:'Jacky Health Smart แผน 2',no:'HL-2566-0087321',d:'IPD ฿3,000,000/ปี',st:'Active',exp:'15/01/2570',prem:'฿21,600'}],
   claims:[], tickets:[{no:'TK-2568-061120',name:'ขอหนังสือรับรองเบี้ยปี 2567',st:'Resolved',when:'10/01/2568'}],
   journey:[
     ['07/10 10:02','Email','เปิดอีเมล "เตรียมเอกสารลดหย่อนภาษีปี 2569"'],
@@ -828,7 +828,7 @@ S.push({ id:6, pick:'Mapping', channel:'voice', type:'policyholder', kyc:true, t
       identity:{status:'unknown',method:'ไม่พบ ANI 095-xxx-7788 ในฐานลูกค้า → ต้องยืนยันตัวตนก่อน',conf:0},
       transcript:[
         ['sys','CTI · ANI 095-xxx-7788 ไม่พบใน CRM/CDP → เปิดฟอร์มยืนยันตัวตน'],
-        ['a','ABC ประกันภัย สวัสดีค่ะ ดิฉันพรทิพย์ ขอทราบชื่อด้วยค่ะ'],
+        ['a','Jacky ประกันภัย สวัสดีค่ะ ดิฉันพรทิพย์ ขอทราบชื่อด้วยค่ะ'],
         ['c','วิไลวรรณค่ะ เป็นลูกค้าเดิม แต่เพิ่งเปลี่ยนเบอร์ใหม่ อยากขอหนังสือรับรองเบี้ยไปลดหย่อนภาษีค่ะ'],
         ['a','เพื่อความปลอดภัยของข้อมูล ขอเลขบัตรประชาชนและวันเดือนปีเกิดด้วยค่ะ'],
         ['c','3-1012-xxxxx-xx-7 (ระบบปิดบังอัตโนมัติ) เกิด 12 เมษายน 2528 ค่ะ'],
@@ -844,7 +844,7 @@ S.push({ id:6, pick:'Mapping', channel:'voice', type:'policyholder', kyc:true, t
       identity:{status:'withheld',method:'ผู้โทรซ่อนหมายเลข (Private) → ต้องยืนยันตัวตนก่อน',conf:0},
       transcript:[
         ['sys','CTI · ไม่แสดงหมายเลข → เปิดฟอร์มยืนยันตัวตน'],
-        ['a','ABC ประกันภัย สวัสดีค่ะ ดิฉันพรทิพย์ ขอทราบชื่อด้วยค่ะ'],
+        ['a','Jacky ประกันภัย สวัสดีค่ะ ดิฉันพรทิพย์ ขอทราบชื่อด้วยค่ะ'],
         ['c','วิไลวรรณค่ะ โทรจากเบอร์ที่ทำงาน อยากขอหนังสือรับรองเบี้ยไปลดหย่อนภาษีค่ะ'],
         ['a','สายนี้ไม่แสดงหมายเลข เพื่อความปลอดภัยขอเลขบัตรประชาชนและวันเดือนปีเกิดค่ะ'],
         ['c','3-1012-xxxxx-xx-7 (ระบบปิดบังอัตโนมัติ) เกิด 12 เมษายน 2528 ค่ะ'],
@@ -898,12 +898,12 @@ S.push({ id:7, pick:'ส่งต่อ', type:'policyholder', title:'ส่ง�
    health:{channel:'voice', from:'081-990-2345', route:'IVR กด 2 เคลม → Claims Health Queue', wait:'00:22',
     identity:{status:'matched',method:'Deterministic · ANI ตรงกับเบอร์มือถือหลัก',conf:100},
     profile:{name:'คุณมาลี ทองคำ',ini:'มท',meta:'หญิง · 57 ปี · หาดใหญ่ สงขลา',cdp:'CDP-00122019',since:'ลูกค้าตั้งแต่ 2559 (10 ปี)',clv:'฿412,000',pref:'Voice',consent:'PDPA ✓ · Marketing ✓',segments:[['Gold','gold'],['Health senior','acc'],['Claim active','warn']]},
-    policies:[{p:'health',name:'ABC Health Smart แผน 3',no:'HL-2563-0122019',d:'IPD ฿5,000,000/ปี · ห้อง ฿6,000',st:'Active',exp:'01/03/2570',prem:'฿48,600'}],
+    policies:[{p:'health',name:'Jacky Health Smart แผน 3',no:'HL-2563-0122019',d:'IPD ฿5,000,000/ปี · ห้อง ฿6,000',st:'Active',exp:'01/03/2570',prem:'฿48,600'}],
     claims:[{p:'health',name:'เคลม IPD – ผ่าตัดต้อกระจก',no:'CLM-H-2569-0301',d:'฿42,750 · รพ.เอกชน หาดใหญ่ (สำรองจ่าย)',st:'เปิดเรื่องวันนี้',when:'ยื่น 07/10/2569',warn:true}],
     tickets:[],
-    journey:[['07/10 08:55','ABC Connect App','อัปโหลดใบเสร็จ 3 ไฟล์ในแอป'],['04/10 16:30','Hospital network','ออกจาก รพ. (ข้อมูลจาก รพ. เครือข่าย)'],['02/10 07:40','Voice','สอบถามสิทธิ์ก่อนผ่าตัด'],['01/03 08:00','Billing','ต่ออายุ ฿48,600'],['11/12 10:15','LINE OA','อ่านบทความ "เคลมไม่ต้องสำรองจ่าย"']],
+    journey:[['07/10 08:55','Jacky Connect App','อัปโหลดใบเสร็จ 3 ไฟล์ในแอป'],['04/10 16:30','Hospital network','ออกจาก รพ. (ข้อมูลจาก รพ. เครือข่าย)'],['02/10 07:40','Voice','สอบถามสิทธิ์ก่อนผ่าตัด'],['01/03 08:00','Billing','ต่ออายุ ฿48,600'],['11/12 10:15','LINE OA','อ่านบทความ "เคลมไม่ต้องสำรองจ่าย"']],
     senti:{label:'ปกติ',v:0.1,cls:''}, churn:{v:15,cls:'good',label:'ต่ำ'},
-    nba:{title:'ลงทะเบียน Fax Claim ครั้งหน้า',kind:'Service',prop:74,price:'ฟรี',script:'"ครั้งหน้าแสดงบัตร ABC ที่ รพ. เครือข่ายได้เลย ไม่ต้องสำรองจ่ายค่ะ ส่งรายชื่อ รพ. ในหาดใหญ่ทาง SMS ให้ไหมคะ"'},
+    nba:{title:'ลงทะเบียน Fax Claim ครั้งหน้า',kind:'Service',prop:74,price:'ฟรี',script:'"ครั้งหน้าแสดงบัตร Jacky ที่ รพ. เครือข่ายได้เลย ไม่ต้องสำรองจ่ายค่ะ ส่งรายชื่อ รพ. ในหาดใหญ่ทาง SMS ให้ไหมคะ"'},
     transcript:[['sys','CTI · Screen pop จาก CDP · 0.19 วินาที'],
       ['c','ผ่าตัดต้อกระจกที่ รพ. หาดใหญ่ สำรองจ่ายไป 42,750 บาท อัปโหลดใบเสร็จในแอปแล้วค่ะ'],
       ['a','เห็นใบเสร็จ 3 ไฟล์แล้วค่ะคุณมาลี ดิฉันเปิดเคลม CLM-H-2569-0301 และส่งต่อทีม Claims Health ค่ะ'],
@@ -976,7 +976,7 @@ const idChip=s=>{const i=s.identity2&&st.searched?s.identity2:s.identity;
 function setView(v){st.view=v;document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.view===v));
   ['launcher','desk','arch','dash','reports'].forEach(k=>$('#view-'+k).hidden=k!==v);
   if(v==='dash')renderDash(); if(v==='reports')renderReports(); if(v!=='desk'){$('#toastHost').innerHTML='';} else if(st.step===0)renderToast();
-  try{localStorage.setItem('abc-view',v)}catch(e){}
+  try{localStorage.setItem('jacky-view',v)}catch(e){}
   window.scrollTo({top:0});}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>setView(b.dataset.view));
 
@@ -1348,7 +1348,7 @@ document.addEventListener('mousemove',e=>{const r=e.target.closest&&e.target.clo
 const PER={today:{label:'วันนี้',k:1/30,prev:'เมื่อวาน'},w:{label:'7 วัน',k:7/30,prev:'7 วันก่อนหน้า'},m:{label:'30 วัน',k:1,prev:'30 วันก่อนหน้า'}};
 const REP_TABS=[['exec','ภาพรวมผู้บริหาร'],['agent','พนักงาน'],['channel','ช่องทาง'],['voc','เสียงลูกค้า'],['bo','ส่วนงาน Back Office']];
 const rs={tab:'exec',per:'m',sort:'premium',dir:-1,agent:'A-217'};
-try{const v=JSON.parse(localStorage.getItem('abc-rep')||'{}');if(v.tab)rs.tab=v.tab;if(v.per)rs.per=v.per;}catch(e){}
+try{const v=JSON.parse(localStorage.getItem('jacky-rep')||'{}');if(v.tab)rs.tab=v.tab;if(v.per)rs.per=v.per;}catch(e){}
 const nf=n=>Math.round(n).toLocaleString('en-US');
 const baht=n=>n>=1e6?`฿${(n/1e6).toFixed(1)} ล้าน`:`฿${nf(n)}`;
 const LINE_SAVE=7747*0.55*(82-21)*12; /* สายต่ออายุทาง Voice ~55% ของ 7,747/เดือน ย้ายไป LINE */
@@ -1431,7 +1431,7 @@ function renderReports(){
   $('#repBody').innerHTML={exec:repExec,agent:repAgent,channel:repChannel,voc:repVoc,bo:repBo}[rs.tab]();
   ({exec:()=>{},agent:bindAgent,channel:()=>lineChart('chVol',{...volSeries(),label:'ปริมาณ Contact รายช่องทาง'}),voc:()=>lineChart('npsLine',{x:[...Array(12)].map((_,i)=>'W'+(29+i)),series:[{name:'NPS',color:'--s1',values:[34,35,35,37,36,38,39,38,40,41,41,42]}],min:30,label:'NPS 12 สัปดาห์'},v=>Math.round(v)),bo:()=>{}})[rs.tab]();
 }
-function saveRep(){try{localStorage.setItem('abc-rep',JSON.stringify({tab:rs.tab,per:rs.per}))}catch(e){}}
+function saveRep(){try{localStorage.setItem('jacky-rep',JSON.stringify({tab:rs.tab,per:rs.per}))}catch(e){}}
 let rsz;addEventListener('resize',()=>{clearTimeout(rsz);rsz=setTimeout(()=>{if(st.view==='reports'&&(rs.tab==='channel'||rs.tab==='voc'))renderReports();},200);});
 
 function repExec(){const k=K(),p=PER[rs.per];
@@ -1555,7 +1555,7 @@ function repBo(){const k=K();
 
 /* init */
 renderLauncher();renderArch();renderDesk();
-let v0='launcher';try{v0=localStorage.getItem('abc-view')||'launcher'}catch(e){}
+let v0='launcher';try{v0=localStorage.getItem('jacky-view')||'launcher'}catch(e){}
 if(location.hash&&['launcher','desk','arch','dash','reports'].includes(location.hash.slice(1)))v0=location.hash.slice(1);
 setView(v0);
 </script>

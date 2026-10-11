@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build an offline, single-file copy of the ABC Contact Center 360 mockup.
+"""Build an offline, single-file copy of the Jacky Contact Center 360 mockup.
 
 Reads call-center-mockup/index.html, swaps the Google Fonts <link> tags for
 @font-face rules with the woff2 files embedded as base64, wraps the page in a
@@ -17,9 +17,9 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "call-center-mockup" / "index.html"
 OUT_DIR = ROOT / "offline"
 FONT_DIR = OUT_DIR / "fonts"
-OUT_HTML = OUT_DIR / "ABC-Contact-Center-360.html"
+OUT_HTML = OUT_DIR / "Jacky-Contact-Center-360.html"
 README = OUT_DIR / "README.txt"
-OUT_ZIP = OUT_DIR / "ABC-Contact-Center-360-offline.zip"
+OUT_ZIP = OUT_DIR / "Jacky-Contact-Center-360-offline.zip"
 SITE_DIR = ROOT / "site"  # Netlify publish directory (see netlify.toml)
 SITE_ZIP = OUT_DIR / "netlify-site.zip"
 

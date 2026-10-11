@@ -1,10 +1,10 @@
-ABC Contact Center 360 — Mockup ฉบับ Offline
+Jacky Contact Center 360 — Mockup ฉบับ Offline
 ==============================================
 
 วิธีเปิด
 --------
 1. แตกไฟล์ zip
-2. ดับเบิลคลิก ABC-Contact-Center-360.html
+2. ดับเบิลคลิก Jacky-Contact-Center-360.html
    เปิดได้ใน Chrome, Edge, Safari และ Firefox (เวอร์ชันปัจจุบัน)
    ไม่ต้องต่ออินเทอร์เน็ต ไม่ต้องติดตั้งอะไร ฟอนต์ฝังอยู่ในไฟล์แล้ว
 
