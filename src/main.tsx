@@ -18,6 +18,7 @@ import { ProductsAdmin } from './ui/Products';
 import { TravelAdmin } from './ui/TravelAdmin';
 import { PaAdmin } from './ui/PaAdmin';
 import { FireAdmin } from './ui/FireAdmin';
+import LOGO from '../assets/brand/logo.webp';
 import { StaffGate, setStaffUnlocked, staffUnlocked } from './ui/StaffGate';
 
 type View = 'customer' | 'agent' | 'marketing' | 'vp' | 'backoffice' | 'leads' | 'remit' | 'products' | 'travel' | 'pa' | 'fire' | 'dashboard' | 'mail' | 'split' | 'offer';
@@ -245,7 +246,7 @@ function App() {
       <header className="topbar">
         <div className="brand">
           <span className="logo" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="28" height="28"><path d="M16 3 5 7v8c0 7 4.7 12 11 14 6.3-2 11-7 11-14V7L16 3Z" fill="var(--accent)" /><path d="M10.5 18.5h11l-1.4-4.2a2 2 0 0 0-1.9-1.3h-4.4a2 2 0 0 0-1.9 1.3L10.5 18.5Zm0 0v2.5m11-2.5v2.5" stroke="var(--accent-ink)" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <img src={LOGO} alt="" width={44} height={44} />
           </span>
           <span>
             <b>{t('appName')}</b>

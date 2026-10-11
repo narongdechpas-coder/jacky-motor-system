@@ -17,7 +17,10 @@ const out = await build({
 const js = out.outputFiles[0].text.replace(/<\/script/gi, '<\\/script');
 const css = readFileSync('src/styles.css', 'utf8');
 
+// Favicon: the Jacky mascot, inlined so every copy (online, fragment, offline) carries it.
+const icon = `<link rel="icon" type="image/png" href="data:image/png;base64,${readFileSync('assets/brand/favicon.png').toString('base64')}">`;
 const head = `<title>Jacky Motor Insurance Demo</title>
+${icon}
 <meta name="description" content="ระบบจำลองการซื้อประกันรถยนต์ Jacky: หน้าลูกค้า หลังบ้าน และ Performance Dashboard">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +58,7 @@ writeFileSync('dist/offline/abc-motor-insurance-demo.html', `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jacky Motor Insurance Demo</title>
+${icon}
 <style>${fontCss}</style>
 <style>${css}</style>
 </head>
