@@ -6,7 +6,7 @@ import { fmtBaht, fmtDate, fmtDateTime, useT, type TKey } from '../i18n';
 import { acceptProposal, createProposal, docMeta, sendRenewalPreview, setReminders, storeFiles, submitCase, totalPremium, trackStep, useStore } from '../store';
 import { optionPrice, rateOf } from '../data/agents';
 import { dayKey } from '../lib/time';
-import { DateInput, Field, NumberInput, Segmented, toDmy } from './common';
+import { DateInput, Field, NumberInput, Segmented, toDmy, BrandLogo } from './common';
 import { productName } from './Products';
 import { HERO_IMG, HeroBanner } from './HeroBanner';
 import { OCR_SAMPLE, OcrBox, fakeDocSync, fakeHousePhoto } from './extras';
@@ -81,9 +81,12 @@ export function FireCertificate({ c }: { c: Case }) {
   return (
     <div className="policy-doc tr-cert fire-cert reveal">
       <div className="pd-head">
-        <div>
+        <div className="pd-brand">
+          <BrandLogo size={40} />
+          <div>
           <b>Jacky ประกันภัย · Jacky Insurance</b>
           <div className="muted">{t('fiCertTitle')}</div>
+          </div>
         </div>
         <div className="pd-no num">{c.policyNo}</div>
       </div>

@@ -6,7 +6,7 @@ import { acceptProposal, createProposal, docMeta, storeFiles, submitCase, totalP
 import { OCR_DOC, OCR_SAMPLE, OcrBox, fakeDocSync, type OcrKind } from './extras';
 import { optionPrice, rateOf } from '../data/agents';
 import { dayKey } from '../lib/time';
-import { Field, Segmented, DateInput, toDmy } from './common';
+import { Field, Segmented, DateInput, toDmy, BrandLogo } from './common';
 import { productName } from './Products';
 import { HERO_IMG, HeroBanner } from './HeroBanner';
 
@@ -187,9 +187,12 @@ export function TravelCertificate({ c }: { c: Case }) {
   return (
     <div className="policy-doc tr-cert reveal">
       <div className="pd-head">
-        <div>
+        <div className="pd-brand">
+          <BrandLogo size={40} />
+          <div>
           <b>Jacky ประกันภัย · Jacky Insurance</b>
           <div className="muted">{t('trCertTitle')}</div>
+          </div>
         </div>
         <div className="pd-no num">{c.policyNo}</div>
       </div>

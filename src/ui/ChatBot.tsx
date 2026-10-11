@@ -1,3 +1,4 @@
+import { BrandLogo } from './common';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useT, type TKey } from '../i18n';
 import { buildKnowledge } from '../lib/kb';
@@ -89,7 +90,7 @@ export function ChatBot() {
       {open && (
         <div className="chat-panel chatbot" role="dialog" aria-label={t('cbTitle')}>
           <div className="cb-head">
-            <span className="cb-avatar" aria-hidden="true">J</span>
+            <BrandLogo size={36} className="cb-avatar" />
             <div>
               <b>{t('cbTitle')} <span className="cb-badge">{t('cbBadge')}</span></b>
               <div className="hint">{t('cbLead')}</div>

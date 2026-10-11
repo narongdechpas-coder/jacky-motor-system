@@ -8,7 +8,7 @@ import { last13Months, rolling12 } from '../lib/history';
 import { ach, addRow, lossRatio, perfCells, renewRate, zeroRow, type PerfRow } from '../lib/perf';
 import { DAY_MS, bkkParts, bkkTime, dayKey, monthKey, startOfBkkDay } from '../lib/time';
 import { ClusteredBarChart } from './charts';
-import { useNow, DateInput } from './common';
+import { useNow, DateInput, BrandLogo } from './common';
 import { agentStats } from './Marketing';
 import { productName } from './Products';
 
@@ -275,7 +275,7 @@ function VisitReport({ a, mktId, topics, setTopics, onBack, onRecord }: { a: Age
   const head = (n: number) => (
     <header className="vr-head">
       <div className="vr-brand">
-        <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M16 3 5 7v8c0 7 4.7 12 11 14 6.3-2 11-7 11-14V7L16 3Z" fill="var(--accent)" /><path d="M10.5 18.5h11l-1.4-4.2a2 2 0 0 0-1.9-1.3h-4.4a2 2 0 0 0-1.9 1.3L10.5 18.5Zm0 0v2.5m11-2.5v2.5" stroke="var(--accent-ink)" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        <BrandLogo size={40} />
         <div>
           <b>{t('appName')}</b>
           <div className="vr-title">{t('vrTitle')}</div>

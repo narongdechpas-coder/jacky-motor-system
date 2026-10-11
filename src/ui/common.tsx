@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { Case, CoverageType, Status } from '../types';
+import LOGO from '../../assets/brand/logo.webp';
 import { COVERAGE_LABEL, SLA_LABEL, SLA_STATE_LABEL, STATUS_LABEL, fmtMinutes, useT } from '../i18n';
 import { activeSla, type SlaResult } from '../lib/sla';
 import { isBusinessTime } from '../lib/time';
@@ -240,4 +241,9 @@ export function DateInput({ id, value, onChange, min, max, invalid, 'aria-label'
       <input ref={picker} className="date-native" type="date" tabIndex={-1} aria-hidden="true" value={value} min={min} max={max} onChange={(e) => { setText(toDmy(e.target.value)); onChange(e.target.value); }} />
     </div>
   );
+}
+
+/** The Jacky mascot logo, wherever the brand appears (top bar, documents, chat, sign-in). */
+export function BrandLogo({ size = 44, className = '' }: { size?: number; className?: string }) {
+  return <img className={`brand-logo-img ${className}`.trim()} src={LOGO} alt="" aria-hidden="true" width={size} height={size} style={{ width: size, height: size }} />;
 }

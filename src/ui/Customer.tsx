@@ -31,7 +31,7 @@ import { riderRows } from './riders';
 import { COVERAGE_LABEL, DOC_LABEL, STAGE_LABEL, USAGE_HINT, USAGE_LABEL, fmtBaht, fmtDate, fmtDateTime, fmtSize, usageText, useT, type TKey } from '../i18n';
 import { requiredDocs, needsDocConfirm, canUpload, captureLead, trackStep, customerConfirm, customerDecline, docsMissing, payAndIssue, submitCase, totalPremium, uploadDoc, useStore } from '../store';
 import { getFile } from '../files';
-import { DateInput, Field, NumberInput, StatusPill, TypeTag } from './common';
+import { DateInput, Field, NumberInput, StatusPill, TypeTag, BrandLogo } from './common';
 import { BrandIcon, CarArt, FakeQr, UsageIcon } from './icons';
 import { PartnerLogin } from './PartnerLogin';
 import { attachSampleDocs } from './extras';
@@ -1243,9 +1243,12 @@ function PolicyDoc({ c }: { c: Case }) {
   return (
     <div className="policy-doc reveal">
       <div className="pd-head">
-        <div>
+        <div className="pd-brand">
+          <BrandLogo size={40} />
+          <div>
           <b>Jacky ประกันภัย · Jacky Insurance</b>
           <div className="muted">{t('policyDoc')}</div>
+          </div>
         </div>
         <div className="pd-no num">{c.policyNo}</div>
       </div>
