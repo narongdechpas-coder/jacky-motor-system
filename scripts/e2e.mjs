@@ -34,14 +34,26 @@ const watch = (p) => {
 let step = 0;
 const log = (s) => console.log(`  ${++step}. ${s}`);
 // Jacky screens live under the "Jacky system" top menu, in its side menu.
+// Staff screens ask for the Jacky system password once per tab.
+const unlock = async (p) => {
+  const gate = p.locator('.staff-gate');
+  if (!(await gate.isVisible().catch(() => false))) return;
+  await gate.locator('#sg-password').fill('5228');
+  await gate.getByRole('button', { name: 'เข้าสู่ระบบ' }).click();
+  await gate.waitFor({ state: 'detached' });
+};
 const abc = async (p, view) => {
-  if (!(await p.locator('.abc-side').count())) await p.locator('.mainnav .nav-abc').click();
+  if (!(await p.locator('.abc-side').count())) {
+    await p.locator('.mainnav .nav-abc').click();
+    await unlock(p);
+  }
   if (await p.locator('.side-show').count()) await p.locator('.side-show').click();
   await p.locator(`.abc-side .nav-${view}`).click();
 };
 const tools = async (p, item) => {
   await p.locator('.nav-tools').click();
   await p.getByRole('menuitem', { name: item }).click();
+  await unlock(p);
 };
 
 // The customer home lists the lines of business; motor starts from its card.
@@ -56,8 +68,26 @@ await customer.goto(url + '#customer');
 const office = await ctx.newPage();
 watch(office);
 await office.goto(url + '#backoffice');
+// The Jacky system asks for the staff password first; the customer page waits behind it.
+const gate = office.locator('.staff-gate');
+await gate.waitFor();
+assert.equal(await office.locator('.abc-side').count(), 0, 'no staff screen before the password');
+await gate.locator('#sg-password').fill('1234');
+await gate.getByRole('button', { name: 'เข้าสู่ระบบ' }).click();
+await gate.getByText('รหัสผ่านไม่ถูกต้อง (ลองได้อีก 4 ครั้ง)').waitFor();
+await gate.getByRole('button', { name: 'ยกเลิก' }).click();
+await office.locator('.mainnav .nav-abc').click();
+await unlock(office);
 await office.getByRole('heading', { name: 'งานเข้า' }).waitFor();
-log('customer and back-office tabs open');
+// Sign out locks it again; signing back in is asked once more.
+await office.locator('.side-lock').click();
+await office.locator('.line-nav').waitFor();
+await office.locator('.mainnav .nav-abc').click();
+await office.locator('.staff-gate').waitFor();
+await unlock(office);
+await abc(office, 'backoffice');
+await office.getByRole('heading', { name: 'งานเข้า' }).waitFor();
+log('customer and back-office tabs open; the Jacky system asks for the staff password (wrong one refused, sign-out locks it)');
 // Chatbot: the page sends the conversation and the live catalogue to /api/chat (mocked here; the
 // real one is a Netlify function calling Claude). Personal data never leaves the page.
 const chatCalls = [];
@@ -698,6 +728,7 @@ log('agent reported the remittance; back office was alerted and recorded it');
 const mkt = await ctx.newPage();
 watch(mkt);
 await mkt.goto(url + '?m=1#marketing');
+await unlock(mkt);
 await thai(mkt);
 await mkt.locator('#mkt-as').selectOption('m2');
 await mkt.locator('.agent-table tr', { hasText: 'วันเพ็ญ ศรีสวัสดิ์' }).waitFor();
@@ -1426,6 +1457,7 @@ if (shots) {
   const overflow = await phone.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
   assert.equal(overflow, false, 'no horizontal scroll on phone');
   await phone.goto(url + '#dashboard');
+  await unlock(phone);
   await phone.screenshot({ path: `${shots}/7-phone-dash.png`, fullPage: true });
 }
 

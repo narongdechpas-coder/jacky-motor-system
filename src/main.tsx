@@ -18,6 +18,7 @@ import { ProductsAdmin } from './ui/Products';
 import { TravelAdmin } from './ui/TravelAdmin';
 import { PaAdmin } from './ui/PaAdmin';
 import { FireAdmin } from './ui/FireAdmin';
+import { StaffGate, setStaffUnlocked, staffUnlocked } from './ui/StaffGate';
 
 type View = 'customer' | 'agent' | 'marketing' | 'vp' | 'backoffice' | 'leads' | 'remit' | 'products' | 'travel' | 'pa' | 'fire' | 'dashboard' | 'mail' | 'split' | 'offer';
 const VIEWS: View[] = ['customer', 'agent', 'marketing', 'vp', 'backoffice', 'leads', 'remit', 'products', 'travel', 'pa', 'fire', 'dashboard', 'mail', 'split'];
@@ -31,6 +32,8 @@ const ABC_GROUPS: [NavKey, [View, NavKey][]][] = [
 ];
 const ABC_VIEWS = ABC_GROUPS.flatMap(([, items]) => items.map(([v]) => v));
 const isAbc = (v: View) => ABC_VIEWS.includes(v);
+/** Staff-only screens: the Jacky system and the demo tools that show its data (mail, split view). */
+const isStaff = (v: View) => isAbc(v) || v === 'mail' || v === 'split';
 type OfferView = { id: string; asAgent: boolean; print: boolean };
 const hashOffer = (): OfferView | null => {
   const m = typeof location !== 'undefined' ? /^#offer\/([\w-]+)/.exec(location.hash) : null;
@@ -54,10 +57,15 @@ const write = (k: string, v: string) => {
 
 function App() {
   const [lang, setLangState] = useState<Lang>(() => (read('abc-lang') === 'en' ? 'en' : 'th'));
+  // A staff screen asked for (link or menu) waits behind the password, the customer page shows meanwhile.
+  const [gate, setGate] = useState<View | null>(() => {
+    const h = (typeof location !== 'undefined' ? location.hash.slice(1) : '') as View;
+    return VIEWS.includes(h) && isStaff(h) && !staffUnlocked() ? h : null;
+  });
   const [view, setViewState] = useState<View>(() => {
     if (hashOffer()) return 'offer';
     const h = (typeof location !== 'undefined' ? location.hash.slice(1) : '') as View;
-    return VIEWS.includes(h) ? h : 'customer';
+    return VIEWS.includes(h) && !(isStaff(h) && !staffUnlocked()) ? h : 'customer';
   });
   const [offer, setOffer] = useState<OfferView | null>(hashOffer);
   const [beforeOffer, setBeforeOffer] = useState<View>('customer');
@@ -100,6 +108,10 @@ function App() {
     document.documentElement.lang = l;
   };
   const setView = (v: View) => {
+    if (isStaff(v) && !staffUnlocked()) {
+      setToolsOpen(false);
+      return setGate(v);
+    }
     setViewState(v);
     if (isAbc(v)) setLastAbc(v);
     setToolsOpen(false);
@@ -290,6 +302,9 @@ function App() {
                   ))}
                 </div>
               ))}
+              <button type="button" className="side-lock" onClick={() => { setStaffUnlocked(false); setView('customer'); }}>
+                <span aria-hidden="true">🔒</span> {t('sgSignOut')}
+              </button>
             </aside>
             <div className="abc-main">
               {(view === 'backoffice' || view === 'leads' || view === 'remit') && backOffice}
@@ -317,6 +332,7 @@ function App() {
           </div>
         )}
       </main>
+      {gate && <StaffGate onOk={() => { const v = gate; setGate(null); setView(v); }} onCancel={() => { setGate(null); try { history.replaceState(null, '', `#${view}`); } catch { /* ignore */ } }} />}
       <footer className="foot">{t('demoNote')}</footer>
       <Toasts items={toasts} dismiss={(id) => setToasts((cur) => cur.filter((x) => x.id !== id))} />
     </LangContext.Provider>
