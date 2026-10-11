@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useT } from '../i18n';
 import { useStore } from '../store';
+import { BrandLogo } from './common';
 
 const SAMPLE_OTP = '246810';
 const mask = (phone: string) => {
@@ -47,7 +48,7 @@ export function PartnerLogin({ onClose, onDone }: { onClose: () => void; onDone:
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal pl-modal" role="dialog" aria-modal="true" aria-label={t('plTitle')} onClick={(e) => e.stopPropagation()}>
         <div className="modal-head">
-          <h3>{t('plTitle')}</h3>
+          <h3 className="modal-brand"><BrandLogo size={36} /> {t('plTitle')}</h3>
           <button type="button" className="btn ghost small" onClick={onClose} aria-label="close">×</button>
         </div>
         <ol className="pl-steps" aria-hidden="true">

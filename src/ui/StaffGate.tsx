@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useT } from '../i18n';
+import { BrandLogo } from './common';
 
 /**
  * Staff password for the Jacky system (back office, products, partner channel, reports, demo tools).
@@ -68,7 +69,7 @@ export function StaffGate({ onOk, onCancel }: { onOk: () => void; onCancel: () =
     <div className="modal-backdrop" onClick={onCancel}>
       <form className="modal staff-gate" role="dialog" aria-modal="true" aria-labelledby="sg-title" onClick={(e) => e.stopPropagation()} onSubmit={submit} noValidate>
         <div className="modal-head">
-          <h3 id="sg-title">🔒 {t('sgTitle')}</h3>
+          <h3 id="sg-title" className="modal-brand"><BrandLogo size={36} /> {t('sgTitle')}</h3>
           <button type="button" className="btn ghost small" onClick={onCancel} aria-label={t('close')}>×</button>
         </div>
         <p className="hint">{t('sgLead')}</p>
