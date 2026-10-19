@@ -25,11 +25,11 @@ export const COVER_LABEL: Record<keyof TravelCover, TKey> = {
 
 /* ---------------- home page ---------------- */
 
-const LINES: { line: Line; icon: string; title: TKey; desc: TKey; live: boolean }[] = [
-  { line: 'motor', icon: '🚗', title: 'lineMotor', desc: 'lineMotorDesc', live: true },
-  { line: 'travel', icon: '✈️', title: 'lineTravel', desc: 'lineTravelDesc', live: true },
-  { line: 'pa', icon: '🩹', title: 'linePa', desc: 'linePaDesc', live: true },
-  { line: 'fire', icon: '🏠', title: 'lineFire', desc: 'lineFireDesc', live: true },
+const LINES: { line: Line; icon: string; title: TKey; short: TKey; desc: TKey; live: boolean }[] = [
+  { line: 'motor', icon: '🚗', title: 'lineMotor', short: 'lineMotorShort', desc: 'lineMotorDesc', live: true },
+  { line: 'travel', icon: '✈️', title: 'lineTravel', short: 'lineTravelShort', desc: 'lineTravelDesc', live: true },
+  { line: 'pa', icon: '🩹', title: 'linePa', short: 'linePaShort', desc: 'linePaDesc', live: true },
+  { line: 'fire', icon: '🏠', title: 'lineFire', short: 'lineFireShort', desc: 'lineFireDesc', live: true },
 ];
 
 /** Customer navigation between lines of business; lines not on sale yet are shown but disabled. */
@@ -38,7 +38,7 @@ export function LineNav({ line, onPick }: { line: Line | null; onPick: (l: Line 
   return (
     <nav className="line-nav" aria-label={t('lineNavLabel')}>
       <button type="button" className={`ln-item${line === null ? ' on' : ''}`} aria-current={line === null ? 'page' : undefined} onClick={() => onPick(null)}>
-        <span aria-hidden="true">🏠</span> {t('lineNavHome')}
+        <span className="ln-icon" aria-hidden="true">🏠</span> <span className="ln-label">{t('lineNavHome')}</span>
       </button>
       {LINES.map((x) => (
         <button
@@ -48,8 +48,11 @@ export function LineNav({ line, onPick }: { line: Line | null; onPick: (l: Line 
           aria-current={line === x.line ? 'page' : undefined}
           disabled={!x.live}
           onClick={() => onPick(x.line)}
+          aria-label={t(x.title)}
         >
-          <span aria-hidden="true">{x.icon}</span> {t(x.title)}
+          <span className="ln-icon" aria-hidden="true">{x.icon}</span>{' '}
+          <span className="ln-label ln-full">{t(x.title)}</span>
+          <span className="ln-label ln-short" aria-hidden="true">{t(x.short)}</span>
           {!x.live && <small className="ln-soon">{t('lineNavSoon')}</small>}
         </button>
       ))}
