@@ -1920,11 +1920,13 @@ button.line-card:focus-visible { outline: 3px solid var(--accent); outline-offse
 .ct-line-h { margin: 22px 0 10px; font-size: 1.05rem; }
 
 /* ---------- Hero banners (21:9 art, headline on the clear left side) ---------- */
-.hero-banner { position: relative; overflow: hidden; border-radius: var(--r); margin-bottom: 16px; aspect-ratio: 21 / 8; min-height: 260px; max-height: 440px; background: #eef6f2; box-shadow: var(--shadow); isolation: isolate; }
+/* The copy stays in the flow, so on tablets (or with a larger device font) a long headline and the
+   trust list make the banner taller instead of being clipped at the top and bottom. */
+.hero-banner { position: relative; overflow: hidden; border-radius: var(--r); margin-bottom: 16px; display: flex; min-height: clamp(260px, 36vw, 440px); background: #eef6f2; box-shadow: var(--shadow); isolation: isolate; }
 .hb-media { position: absolute; inset: 0; z-index: -1; }
 .hb-media img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; display: block; }
 /* The art is always light, so the copy keeps dark ink in both themes. */
-.hb-copy { position: absolute; left: 0; top: 0; bottom: 0; width: min(48%, 560px); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 24px 32px; color: #17251f; }
+.hb-copy { position: relative; width: min(48%, 560px); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 24px 32px; color: #17251f; }
 .hb-copy h1 { margin: 0; font-family: var(--f-display); font-weight: 500; font-size: clamp(1.45rem, 2.8vw, 2.2rem); line-height: 1.22; color: #12302a; }
 .hb-copy > p { margin: 0; color: #3c4f48; max-width: 44ch; font-size: 1rem; }
 .hb-copy .trust { margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; color: #2f4640; }
@@ -1932,7 +1934,7 @@ button.line-card:focus-visible { outline: 3px solid var(--accent); outline-offse
 .hb-copy .trust-note { margin: 0; color: #5f6f69; font-size: 0.72rem; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .hero-banner { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06); } }
 @media (max-width: 760px) {
-  .hero-banner { aspect-ratio: auto; min-height: 0; max-height: none; display: grid; background: var(--surface); }
+  .hero-banner { min-height: 0; display: grid; background: var(--surface); }
   .hb-media { position: static; z-index: auto; aspect-ratio: 16 / 9; }
   .hb-media img { object-position: 82% 50%; }
   .hb-copy { position: static; width: auto; padding: 16px 18px 18px; color: var(--ink); }
