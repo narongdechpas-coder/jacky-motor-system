@@ -43,6 +43,13 @@ assert.equal(bad.status, 502, 'API error passed on as 502');
 assert.deepEqual(await bad.json(), { error: 'upstream', status: 401, type: 'authentication_error', detail: 'invalid x-api-key' }, 'with the reason');
 globalThis.fetch = async () => { throw new Error('offline'); };
 assert.equal((await (await handler(post(ok, '4.4.4.4'))).json()).detail, 'network');
+globalThis.fetch = async (url, init) => {
+  assert.ok(init.signal, 'the API call has a deadline');
+  throw new DOMException('The operation was aborted due to timeout', 'TimeoutError');
+};
+const slow = await handler(post(ok, '4.4.4.5'));
+assert.equal(slow.status, 504, 'too slow: 504');
+assert.deepEqual(await slow.json(), { error: 'timeout' }, 'said as a timeout, not a crash');
 
 globalThis.fetch = async () => new Response(JSON.stringify({ content: [{ type: 'text', text: 'ok' }] }), { status: 200 });
 globalThis.fetch = async () => new Response(JSON.stringify({ stop_reason: 'max_tokens', content: [{ type: 'text', text: 'ยาว' }] }), { status: 200 });
