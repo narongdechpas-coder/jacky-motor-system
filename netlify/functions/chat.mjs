@@ -3,13 +3,15 @@
  * The page sends the conversation and the product knowledge it is showing (built from the same
  * catalogue the website prices from); the model answers only from that knowledge.
  *
- * Netlify settings: ANTHROPIC_API_KEY (required), CHAT_MODEL (optional, default claude-haiku-5-5).
+ * Netlify settings: ANTHROPIC_API_KEY (required), CHAT_MODEL (optional, default claude-haiku-5-5),
+ * CHAT_TIMEOUT_MS (optional, default 9000: give up just before Netlify's 10-second function limit).
  */
 
 const API = 'https://api.anthropic.com/v1/messages';
 const MAX_TURNS = 20;
 const MAX_CHARS = 1000;
 const MAX_KB = 120_000;
+const TIMEOUT_MS = Number(process.env.CHAT_TIMEOUT_MS) || 9000;
 const LIMIT = 30; // messages per visitor per 10 minutes (per warm function instance; best effort)
 const WINDOW = 10 * 60_000;
 const hits = new Map();
@@ -92,8 +94,14 @@ export default async (req, context) => {
         ],
         messages: p.messages,
       }),
+      // Answer with a clear "took too long" rather than let Netlify cut the function off mid-call.
+      signal: AbortSignal.timeout(TIMEOUT_MS),
     });
   } catch (e) {
+    if (e?.name === 'TimeoutError') {
+      console.error(`chat: Claude API did not answer within ${TIMEOUT_MS} ms`);
+      return json({ error: 'timeout' }, 504);
+    }
     console.error('chat: could not reach the Claude API', e);
     return json({ error: 'upstream', detail: 'network' }, 502);
   }
@@ -106,7 +114,10 @@ export default async (req, context) => {
     return json({ error: 'upstream', status: res.status, type: data?.error?.type ?? '', detail }, 502);
   }
   const text = (data.content ?? []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
-  if (!text) return json({ error: 'empty' }, 502);
+  if (!text) {
+    console.error(`chat: empty answer (stop_reason ${data.stop_reason ?? ''})`);
+    return json({ error: 'empty', detail: String(data.stop_reason ?? '') }, 502);
+  }
   // Cut off at the length limit: say so rather than end mid-sentence.
   return json({ text, ...(data.stop_reason === 'max_tokens' ? { truncated: true } : {}) });
 };

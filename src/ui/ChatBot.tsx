@@ -62,7 +62,14 @@ export function ChatBot() {
     setMsgs(next);
     if (!/^https?:$/.test(location.protocol)) return notice('cbOffline');
     // Only the real conversation goes to the model (local notices are left out), most recent 10 turns.
-    const convo = next.filter((m) => !m.local).slice(-19);
+    // A question that got no answer (an error) is merged into the next one, so turns still alternate.
+    const convo: { role: 'user' | 'assistant'; content: string }[] = [];
+    for (const m of next.filter((x) => !x.local)) {
+      const last = convo[convo.length - 1];
+      if (last && last.role === m.role) last.content = `${last.content}\n${m.content}`;
+      else convo.push({ role: m.role, content: m.content });
+    }
+    convo.splice(0, Math.max(0, convo.length - 19));
     while (convo.length && convo[0].role !== 'user') convo.shift();
     setBusy(true);
     try {
@@ -77,7 +84,13 @@ export function ChatBot() {
         // Say why the API refused (wrong key, no credit, model not available) so it can be fixed.
         const why = data.status === 401 ? t('cbErrKey') : /credit/i.test(data.detail ?? '') ? t('cbErrCredit') : data.status === 404 ? t('cbErrModel') : '';
         setMsgs((m) => [...m, { role: 'assistant', content: `${t('cbError')}\n${why ? `${why} ` : ''}(${data.status ?? ''} ${data.detail ?? ''})`.trim(), local: true }]);
-      } else notice(data.error === 'not_configured' ? 'cbNotSet' : data.error === 'rate_limited' ? 'cbBusy' : res.status === 404 ? 'cbOffline' : 'cbError');
+      } else if (data.error === 'not_configured' || data.error === 'rate_limited' || res.status === 404) notice(data.error === 'not_configured' ? 'cbNotSet' : data.error === 'rate_limited' ? 'cbBusy' : 'cbOffline');
+      else {
+        // Anything else: still say what happened (timeout, the function itself failing, a refused request).
+        const why = data.error === 'timeout' ? t('cbErrTimeout') : !data.error && res.status >= 500 ? t('cbErrServer') : '';
+        const code = [res.status, data.error, data.detail].filter(Boolean).join(' ');
+        setMsgs((m) => [...m, { role: 'assistant', content: `${t('cbError')}\n${why ? `${why} ` : ''}(${code})`, local: true }]);
+      }
     } catch {
       notice('cbOffline');
     } finally {

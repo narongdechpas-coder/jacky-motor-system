@@ -127,6 +127,12 @@ chatReply = { status: 200, body: { error: 'upstream', status: 401, type: 'authen
 await customer.locator('#cb-input').fill('ผ่อนได้กี่เดือน');
 await customer.locator('#cb-input').press('Enter');
 await customer.locator('.cb-msg.local', { hasText: 'API key ไม่ถูกต้อง' }).waitFor();
+assert.deepEqual(chatCalls[2].messages.map((m) => m.role), ['user', 'assistant', 'user'], 'an unanswered question is merged into the next one, so turns still alternate');
+assert.equal(chatCalls[2].messages[2].content, 'ผ่อนได้ไหม\nผ่อนได้กี่เดือน');
+chatReply = { status: 200, body: { error: 'timeout' } };
+await customer.locator('#cb-input').fill('มีแบบไหนบ้าง');
+await customer.locator('#cb-input').press('Enter');
+await customer.locator('.cb-msg.local', { hasText: 'ตอบช้าเกินเวลา' }).waitFor();
 await customer.locator('.chatbot').getByRole('button', { name: 'คุยกับเจ้าหน้าที่' }).click();
 await customer.getByText('@jacky-demo').waitFor();
 await customer.getByRole('button', { name: 'ปิด', exact: true }).click();
